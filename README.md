@@ -19,14 +19,14 @@ This repository contains the practice code for the labs in **IBM-CD0215EN-Skills
 John Rofrano, Senior Technical Staff Member, DevOps Champion, @ IBM Research
 
 ## Important Commands
-* Install git-clone from Tekton Hub: `tkn hub install task git-clone`
-* Install flake8 from Tekton Hub: `tkn hub install task flake8`
-* Apply the configuration from tasks.yml: `kubectl apply -f tasks.yaml`
-* Apply the configuration from pipeline.yml: `kubectl apply -f pipeline.yaml`
-* Apply the configuration from pvc.yml: `kubectl apply -f pvc.yaml`  (Persistent Volume Claim)
-* Check configured workspace tasks: `tkn task ls`
-* Check configures cluster tasks: `tkn clustertask ls`
-* Run the pipeline:
+* Tekton:
+  * Install git-clone from Tekton Hub: `tkn hub install task git-clone`
+  * Install flake8 from Tekton Hub: `tkn hub install task flake8`
+  * Check configured workspace tasks: `tkn task ls`
+  * Check configures cluster tasks: `tkn clustertask ls`
+  * Check the pipeline status: `tkn pipelinerun ls`
+  * Check the latest logs: `tkn pipelinerun logs --last`
+  * Run the pipeline:
   ```
   tkn pipeline start cd-pipeline \
   -p repo-url="https://github.com/ibm-developer-skills-network/wtecc-CICD_PracticeCode.git" \
@@ -36,7 +36,10 @@ John Rofrano, Senior Technical Staff Member, DevOps Champion, @ IBM Research
   -w name=pipeline-workspace,claimName=pipelinerun-pvc \
   --showlog
   ```
-* Check the pipeline status: `tkn pipelinerun ls`
-* Check the latest logs: `tkn pipelinerun logs --last`
+* Kubernetes:
+  * Apply the configuration from tasks.yml: `kubectl apply -f tasks.yaml`
+  * Apply the configuration from pipeline.yml: `kubectl apply -f pipeline.yaml`
+  * Apply the configuration from pvc.yml: `kubectl apply -f pvc.yaml`  (Persistent Volume Claim)
+  * Check deployment is running: `kubectl get all -l app=hitcounter`
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
